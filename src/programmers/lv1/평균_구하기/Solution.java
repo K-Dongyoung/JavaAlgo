@@ -1,4 +1,4 @@
-package programmers.평균_구하기;
+package programmers.lv1.평균_구하기;
 
 public class Solution {
     public double solution(int[] arr) {

@@ -1,4 +1,4 @@
-package programmers.짝수와_홀수;
+package programmers.lv1.짝수와_홀수;
 
 public class Solution {
 
