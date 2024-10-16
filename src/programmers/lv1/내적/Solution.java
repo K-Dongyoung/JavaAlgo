@@ -12,6 +12,7 @@ public class Solution {
         return answer;
     }
 
+    //다른 사람 풀이
     public int solution2(int[] a, int[] b) {
         return IntStream.range(0, a.length).map(index -> a[index] * b[index]).sum();
     }
