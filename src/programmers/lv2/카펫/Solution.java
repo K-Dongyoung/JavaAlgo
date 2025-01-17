@@ -17,10 +17,7 @@ public class Solution {
         for(int i = 3;; i++){
             w = i;
             h = x - w;
-            if (w < h) {
-                continue;
-            }
-            if (w * h == y) return new int[]{w, h};
+            if (w * h == y) return new int[]{Integer.max(w, h), Integer.min(w, h)};
         }
     }
 
