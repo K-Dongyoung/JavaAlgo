@@ -8,17 +8,10 @@ public class Solution {
         PriorityQueue<Integer> pq = new PriorityQueue<>();
         int[] answer = new int[score.length];
 
-        for(int i = 0; i < k; i++) {
-            if (i < score.length) {
-                pq.add(score[i]);
-                answer[i] = pq.peek();
-            }
-        }
-
-        for(int i = k; i < score.length; i++) {
-            if (pq.peek() < score[i]) {
+        for(int i = 0; i < score.length; i++) {
+            pq.add(score[i]);
+            if (pq.size() > k) {
                 pq.poll();
-                pq.add(score[i]);
             }
             answer[i] = pq.peek();
         }
