@@ -22,5 +22,6 @@ public class Solution {
         System.out.println(s.solution(6));
         System.out.println(s.solution(5000));
         System.out.println(Integer.toBinaryString(5000));
+        System.out.println(Integer.bitCount(5000));
     }
 }
