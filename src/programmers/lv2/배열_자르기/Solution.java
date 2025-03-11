@@ -1,16 +1,12 @@
 package programmers.lv2.배열_자르기;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Solution {
     public int[] solution(int n, long left, long right) {
         int[] answer = new int[(int) (right - left + 1)];
-        for(int i = (int) (left / n); i <= (right / n); i++) {
-            for(int j = 0; j < n; j++) {
-                if (left <= (long) i * n + j && (long) i * n + j <= right) {
-                    answer[(int) (i * n + j - left)] = i > j ? i + 1 : j + 1;
-                }
-            }
+        for(long i = left; i <= right; i++) {
+            answer[(int) (i - left)] = i / n > i % n ? (int) (i / n) + 1 : (int) (i % n) + 1;
         }
         return answer;
     }
