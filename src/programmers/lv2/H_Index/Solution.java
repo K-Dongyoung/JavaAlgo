@@ -12,6 +12,17 @@ public class Solution {
         return h;
     }
 
+    public int solution2(int[] citations) {
+        Arrays.sort(citations);
+        int h = 0;
+        for (int i = 0; i < citations.length; i++) {
+            int temp = Math.min(citations[i], citations.length - i);
+            if (h > temp) break;
+            h = temp;
+        }
+        return h;
+    }
+
     public static void main(String[] args) {
         Solution s = new Solution();
         System.out.println(s.solution(new int[]{3, 0, 6, 1, 5}));
