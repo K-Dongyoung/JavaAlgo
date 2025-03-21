@@ -29,7 +29,7 @@ public class Main {
         }
 
         visited = new boolean[N + 1];
-        dfs2(V);
+        dfs3(V);
 //        recursive_dfs(V);
 
         visited = new boolean[N + 1];
@@ -84,6 +84,24 @@ public class Main {
             }
 
             if (!flag) stack.pop();
+        }
+    }
+
+    public static void dfs3(int V) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        System.out.println(adj);
+        visited[V] = true;
+        stack.push(V);
+
+        while (!stack.isEmpty()) {
+            V = stack.pop();
+            result.append(V).append(" ");
+            for(int v : adj.get(V)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    stack.push(v);
+                }
+            }
         }
     }
 
