@@ -29,12 +29,12 @@ public class Main {
         }
 
         visited = new boolean[N + 1];
-//        dfs(V);
-        recursive_dfs(V);
+        dfs2(V);
+//        recursive_dfs(V);
 
         visited = new boolean[N + 1];
         result.append("\n");
-        bfs(V);
+        bfs2(V);
 
         System.out.println(result);
     }
@@ -53,6 +53,30 @@ public class Main {
             boolean flag = false;
             for(int v : adj.get(V)) {
                 if (!visited[v]) {
+                    stack.push(v);
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag) stack.pop();
+        }
+    }
+
+    public static void dfs2(int V) {
+        Deque<Integer> stack = new ArrayDeque<>();
+        visited[V] = true;
+        result.append(V).append(" ");
+        stack.push(V);
+
+        while (!stack.isEmpty()) {
+            V = stack.peek();
+
+            boolean flag = false;
+            for(int v : adj.get(V)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    result.append(v).append(" ");
                     stack.push(v);
                     flag = true;
                     break;
@@ -85,6 +109,23 @@ public class Main {
             for (int v : adj.get(V)) {
                 if (!visited[v]) {
                     visited[v] = true;
+                    queue.offer(v);
+                }
+            }
+        }
+    }
+
+    public static void bfs2(int V) {
+        Deque<Integer> queue = new ArrayDeque<>();
+        queue.offer(V);
+        visited[V] = true;
+        result.append(V).append(" ");
+        while (!queue.isEmpty()) {
+            V = queue.poll();
+            for (int v : adj.get(V)) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    result.append(v).append(" ");
                     queue.offer(v);
                 }
             }
