@@ -2,7 +2,7 @@ package baekjoon.bronze;
 
 import java.util.Scanner;
 
-public class P11720 {
+public class B4_11720 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
