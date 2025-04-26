@@ -2,7 +2,7 @@ package programmers.lv2.튜플;
 
 import java.util.*;
 
-public class Solution {
+public class Solution2 {
     public int[] solution(String s) {
         String[] a = s.substring(2, s.length() - 2).split("},\\{");
         String[][] b = new String[a.length][];
@@ -14,19 +14,21 @@ public class Solution {
             orderedArray[set.length - 1] = set;
         }
 
+        Set<String> set = new HashSet<>();
         int[] answer = new int[a.length];
-        answer[0] = Integer.parseInt(orderedArray[0][0]);
-        for (int i = 1; i < a.length; i++) {
-            Set<String> s2 = new HashSet<>(Arrays.asList(orderedArray[i]));
-            Set<String> s1 = new HashSet<>(Arrays.asList(orderedArray[i - 1]));
-            s2.removeAll(s1);
-            answer[i] = Integer.parseInt((String) s2.toArray()[0]);
+        for (int i = 0; i < a.length; i++) {
+            for (String n : orderedArray[i]) {
+                if (set.add(n)) {
+                    answer[i] = Integer.parseInt(n);
+                    break;
+                }
+            }
         }
         return answer;
     }
 
     public static void main(String[] args) {
-        Solution s = new Solution();
+        Solution2 s = new Solution2();
         System.out.println(Arrays.toString(s.solution("{{2},{2,1},{2,1,3},{2,1,3,4}}")));
         System.out.println(Arrays.toString(s.solution("{{1,2,3},{2,1},{1,2,4,3},{2}}")));
         System.out.println(Arrays.toString(s.solution("{{20,111},{111}}")));
