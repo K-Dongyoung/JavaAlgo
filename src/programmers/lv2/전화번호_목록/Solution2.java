@@ -19,8 +19,11 @@ public class Solution2 {
 
         for (int i = 0; i < 10; i++) {
             if (a[i].size() <= 1) continue;
-            a[i].sort((x, y) -> Integer.compare(x.length(), y.length()));
-            if (a[i].getFirst().length() == d + 1) return false;
+//            a[i].sort((x, y) -> Integer.compare(x.length(), y.length()));
+//            if (a[i].getFirst().length() == d + 1) return false;
+            for (String num : a[i]) {
+                if (num.length() == d + 1) return false;
+            }
             if (!f(a[i].toArray(new String[0]), d + 1)) return false;
         }
 
