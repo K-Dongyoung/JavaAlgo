@@ -2,6 +2,7 @@ package programmers.lv2.프로세스;
 
 import java.util.Arrays;
 
+// 성능은 Solution 보다 조금 안좋지만 성능 편차는 적음.. 정렬에 시간이 많이 걸리나 봄
 public class Solution2 {
     public int solution(int[] priorities, int location) {
         int answer = 0;
