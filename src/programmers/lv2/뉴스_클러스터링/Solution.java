@@ -4,24 +4,10 @@ import java.util.*;
 
 class Solution {
     public int solution(String str1, String str2) {
-        Map<String, Integer> m1 = new HashMap<>();
-        Map<String, Integer> m2 = new HashMap<>();
+        Map<String, Integer> m1 = generateMap(str1);
+        Map<String, Integer> m2 = generateMap(str2);
         int union = 0;
         int intersection = 0;
-
-        for (int i = 0; i < str1.length() - 1; i++) {
-            String sub1 = str1.substring(i, i + 2).toLowerCase();
-            char c1 = sub1.charAt(0), c2 = sub1.charAt(1);
-            if (c1 < 'a' || 'z' < c1 || c2 < 'a' || 'z' < c2) continue;
-            m1.put(sub1, m1.getOrDefault(sub1, 0) + 1);
-        }
-
-        for (int i = 0; i < str2.length() - 1; i++) {
-            String sub2 = str2.substring(i, i + 2).toLowerCase();
-            char c1 = sub2.charAt(0), c2 = sub2.charAt(1);
-            if (c1 < 'a' || 'z' < c1 || c2 < 'a' || 'z' < c2) continue;
-            m2.put(sub2, m2.getOrDefault(sub2, 0) + 1);
-        }
 
         Set<String> keys = new HashSet<>(m1.keySet());
         keys.addAll(m2.keySet());
@@ -38,6 +24,17 @@ class Solution {
 
         double answer = (double) intersection / union;
         return (int) (answer * 65536);
+    }
+
+    private Map<String, Integer> generateMap(String str) {
+        HashMap<String, Integer> m = new HashMap<>();
+        for (int i = 0; i < str.length() - 1; i++) {
+            String sub1 = str.substring(i, i + 2).toLowerCase();
+            char c1 = sub1.charAt(0), c2 = sub1.charAt(1);
+            if (c1 < 'a' || 'z' < c1 || c2 < 'a' || 'z' < c2) continue;
+            m.put(sub1, m.getOrDefault(sub1, 0) + 1);
+        }
+        return m;
     }
 
     public static void main(String[] args) {
