@@ -1,29 +1,24 @@
 package programmers.lv1.옹알이2;
 
-// replace랑 예외처리 때문에 성능 안좋음
 public class Solution2 {
     public int solution(String[] babbling) {
         String[] words = {"aya", "ye", "woo", "ma"};
         int answer = 0;
         for (String s : babbling) {
-            for (int i = 0; i < words.length; i++) {
-                s = s.replace(words[i], "" + (i + 1));
-            }
-            if (f(s)) answer++;
+            if (f(words, s, 0, "")) answer++;
         }
         return answer;
     }
 
-    private boolean f(String s) {
-        try {
-            Integer.valueOf(s);
-        } catch (Exception e) {
-            return false;
+    private boolean f(String[] words, String s, int idx, String previous) {
+        if (idx == s.length()) return true;
+        for (String word : words) {
+            if (s.startsWith(word, idx)) {
+                if (previous.equals(word)) return false;
+                return f(words, s, idx + word.length(), word);
+            }
         }
-        for (int i = 0; i < s.length() - 1; i++) {
-            if (s.charAt(i) == s.charAt(i + 1)) return false;
-        }
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {

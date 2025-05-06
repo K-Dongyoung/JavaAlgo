@@ -1,6 +1,5 @@
 package programmers.lv1.옹알이2;
 
-// 내가 봐도 아주 아름답게 풀었다
 public class Solution {
     public int solution(String[] babbling) {
         String[] words = {"aya", "ye", "woo", "ma"};
