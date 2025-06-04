@@ -1,7 +1,10 @@
 package programmers.lv2.방문_길이;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
+// 대각선으로 이동할 수 있다면 틀린 풀이임. 확장성이 떨어짐. (0, 0) -> (1, 1) 이랑 (1, 0) -> (0, 1) 같은 경우로 생각함
 public class Solution {
     public int solution(String dirs) {
         Set<A> visited = new HashSet<>();
