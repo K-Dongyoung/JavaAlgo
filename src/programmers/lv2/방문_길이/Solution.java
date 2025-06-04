@@ -12,16 +12,24 @@ public class Solution {
             A a = new A();
             a.add(x, y);
 
-            x = switch (dir) {
-                case 'R' -> Math.min(5, x + 1);
-                case 'L' -> Math.max(-5, x - 1);
-                default -> x;
-            };
-            y = switch (dir) {
-                case 'U' -> Math.min(5, y + 1);
-                case 'D' -> Math.max(-5, y - 1);
-                default -> y;
-            };
+            switch (dir) {
+                case 'R':
+                    if (x == 5) continue;
+                    x += 1;
+                    break;
+                case 'L':
+                    if (x == -5) continue;
+                    x -= 1;
+                    break;
+                case 'U':
+                    if (y == 5) continue;
+                    y += 1;
+                    break;
+                case 'D':
+                    if (y == -5) continue;
+                    y -= 1;
+                    break;
+            }
 
             a.add(x, y);
             if (visited.add(a)) answer++;
