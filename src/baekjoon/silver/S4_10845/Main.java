@@ -14,22 +14,19 @@ public class Main {
         for (int i = 0; i < n; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             String order = st.nextToken();
-            if (order.equals("push")) {
-                if (st.hasMoreTokens()) {
-                    queue[++back] = Integer.parseInt(st.nextToken());
-                } else {
-                    System.out.println("push only integer number");
+            switch (order) {
+                case "push" -> {
+                    if (st.hasMoreTokens()) {
+                        queue[++back] = Integer.parseInt(st.nextToken());
+                    } else {
+                        System.out.println("push only integer number");
+                    }
                 }
-            } else if (order.equals("pop")) {
-                System.out.println(front == back ? -1 : queue[++front]);
-            } else if (order.equals("size")) {
-                System.out.println(back - front);
-            } else if (order.equals("empty")) {
-                System.out.println(front == back ? 1 : 0);
-            } else if (order.equals("front")) {
-                System.out.println(front == back ? -1 : queue[front + 1]);
-            }else if (order.equals("back")) {
-                System.out.println(front == back ? -1 : queue[back]);
+                case "pop" -> System.out.println(front == back ? -1 : queue[++front]);
+                case "size" -> System.out.println(back - front);
+                case "empty" -> System.out.println(front == back ? 1 : 0);
+                case "front" -> System.out.println(front == back ? -1 : queue[front + 1]);
+                case "back" -> System.out.println(front == back ? -1 : queue[back]);
             }
         }
     }
