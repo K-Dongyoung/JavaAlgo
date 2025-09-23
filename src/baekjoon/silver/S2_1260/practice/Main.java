@@ -1,4 +1,4 @@
-package baekjoon.silver.S2_1260.Practice;
+package baekjoon.silver.S2_1260.practice;
 
 import java.io.*;
 import java.util.*;
