@@ -33,8 +33,8 @@ public class Main {
 
     static void bfs(int r, int c) {
 
-        int[] rv = new int[]{0, 1, 0, -1};
-        int[] cv = new int[]{1, 0, -1, 0};
+        int[] dr = new int[]{0, 1, 0, -1};
+        int[] dc = new int[]{1, 0, -1, 0};
 
         Deque<Integer> q = new ArrayDeque<>();
         q.offer(r);
@@ -46,8 +46,8 @@ public class Main {
             int cc = q.poll();
 
             for (int i = 0; i < 4; i++) {
-                int nr = cr + rv[i];
-                int nc = cc + cv[i];
+                int nr = cr + dr[i];
+                int nc = cc + dc[i];
 
                 if (nr < 0 || N <= nr) continue;
                 if (nc < 0 || M <= nc) continue;
