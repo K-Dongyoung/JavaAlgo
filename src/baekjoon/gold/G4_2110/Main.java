@@ -6,10 +6,8 @@ import java.util.*;
 public class Main {
 
     static int[] address;
-    static StringBuilder sb = new StringBuilder();
     static int N;
     static int C;
-    static int[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
