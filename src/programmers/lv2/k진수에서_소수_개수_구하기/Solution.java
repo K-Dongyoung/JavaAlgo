@@ -25,13 +25,32 @@ public class Solution {
                 s.pop();
             }
         }
-        if (a > 0) answer = isPrime(a) ? answer + 1 : answer;
+        return answer;
+    }
+
+    public int solution2(int n, int k) {
+        int answer = 0;
+        StringBuilder sb = new StringBuilder();
+
+        while(n > 0) {
+            sb.append(n % k);
+            n /= k;
+        }
+
+        String st = sb.reverse().toString();
+        String[] split = st.split("0+");
+        for (String x : split) {
+            if (x.isEmpty()) continue;
+            if (isPrime(Long.parseLong(x))) answer++;
+        }
+
         return answer;
     }
 
     static boolean isPrime(long n) {
         if (n < 2) return false;
-        for (int i = 2; i <= Math.sqrt(n); i++) {
+        if (n % 2 == 0) return n == 2;
+        for (int i = 3; (long) i * i <= n; i += 2) {
             if (n % i == 0) return false;
         }
         return true;
@@ -39,8 +58,8 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution s = new Solution();
-        System.out.println(s.solution(437674, 3));
-        System.out.println(s.solution(110011, 10));
-        System.out.println(s.solution(1000000, 3));
+        System.out.println(s.solution2(437674, 3));
+        System.out.println(s.solution2(110011, 10));
+        System.out.println(s.solution2(1000000, 3));
     }
 }
