@@ -31,7 +31,9 @@ public class Main2 {
 
         int max = 0;
         for (int i = start; i < N; i++) {
-            max = Math.max(max, f(k - 1, i + 1, sum + numbers[i]));
+            int c = f(k - 1, i + 1, sum + numbers[i]);
+            max = Math.max(max, c);
+            if (max == M) break;
         }
 
         return max;
