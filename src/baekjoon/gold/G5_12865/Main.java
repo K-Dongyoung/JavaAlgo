@@ -22,7 +22,10 @@ public class Main {
 
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= K; j++) {
-                dp[i][j] = Math.max(dp[i - 1][j], j >= k[i] ? dp[i - 1][j - k[i]] + v[i] : 0);
+                dp[i][j] = dp[i - 1][j];
+                if (j >= k[i]) {
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - k[i]] + v[i]);
+                }
             }
         }
 
