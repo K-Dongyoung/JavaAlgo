@@ -12,7 +12,6 @@ public class Main {
     static StringBuilder sb = new StringBuilder();
     static int N;
     static int C;
-    static int[] visited;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -26,7 +25,6 @@ public class Main {
 
         Arrays.sort(address);
 
-        visited = new int[N];
         f(0, new int[C], 0);
         System.out.println(sb);
     }
@@ -37,12 +35,16 @@ public class Main {
             return;
         }
         for (int i = start; i < N; i++) {
-            if (visited[i] == 0) {
-                temp[k] = address[i];
-                visited[i] = 1;
-                f(k + 1, temp, i + 1);
-                visited[i] = 0;
-            }
+            temp[k] = address[i];
+            f(k + 1, temp, i + 1);
         }
     }
 }
+/*
+5 3
+1
+2
+3
+4
+5
+*/
