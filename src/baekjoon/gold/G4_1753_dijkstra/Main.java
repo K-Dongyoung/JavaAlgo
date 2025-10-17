@@ -1,4 +1,4 @@
-package baekjoon.gold.G4_1753;
+package baekjoon.gold.G4_1753_dijkstra;
 
 import java.io.*;
 import java.util.*;
