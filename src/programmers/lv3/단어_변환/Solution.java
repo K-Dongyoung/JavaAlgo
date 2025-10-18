@@ -13,19 +13,20 @@ public class Solution {
 
         boolean[] visited = new boolean[words.length];
 
-        int answer = dfs(begin, target, words, visited, 0);
+        int answer = dfs(begin, target, words, visited, 0, Integer.MAX_VALUE);
         return answer == Integer.MAX_VALUE ? 0 : answer;
     }
 
-    static int dfs(String b, String t, String[] w, boolean[] v, int count) {
-        if (b.equals(t)) return count;
+    static int dfs(String b, String t, String[] w, boolean[] v, int count, int best) {
+        if (count >= best) return best;
+        if (b.equals(t)) return Math.min(best, count);
 
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < w.length; i++) {
             if (v[i]) continue;
             if (isChangeable(b, w[i])) {
                 v[i] = true;
-                min = Math.min(dfs(w[i], t, w, v, count + 1), min);
+                min = Math.min(dfs(w[i], t, w, v, count + 1, min), min);
                 v[i] = false;
             }
         }
